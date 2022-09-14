@@ -8,7 +8,7 @@ export const chartOptions = {
   plugins: {
     title: {
       display: true,
-      text: 'EEUU acomulation covid data',
+      text: 'Acumulación de datos en EEUU',
     },
     zoom: {
       zoom: {

@@ -17,17 +17,22 @@ const CovidOneDayData = ({ oneDayData, onChange, defaultDate }) => {
       />
       {oneDayData && (
         <Descriptions
-          title={`Info dia ${oneDayData.date}`}
+          title={
+            <p>
+              Información del día{' '}
+              <span style={style.span}>{oneDayData.date}</span>
+            </p>
+          }
           bordered
           style={style.description}
         >
           <Descriptions.Item label="Hospitalizados" span={3}>
             {oneDayData.outcomes.hospitalized.currently.value}
           </Descriptions.Item>
-          <Descriptions.Item label="En Incu" span={3}>
+          <Descriptions.Item label="En UCI" span={3}>
             {oneDayData.outcomes.hospitalized.in_icu.currently.value}
           </Descriptions.Item>
-          <Descriptions.Item label="En Ventilación" span={3}>
+          <Descriptions.Item label="Con ventilación asistida" span={3}>
             {oneDayData.outcomes.hospitalized.on_ventilator.currently.value}
           </Descriptions.Item>
         </Descriptions>

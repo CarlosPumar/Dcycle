@@ -8,6 +8,7 @@ const style = {
   },
   description: { margin: '10%' },
   dataPicker: { margin: '5%' },
+  span: { color: '#4287f5' },
 };
 
 export default style;

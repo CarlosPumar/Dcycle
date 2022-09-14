@@ -20,10 +20,10 @@ const HospitalizedChart = ({ oneDayData }) => {
     onVentilator,
   ];
   const data = {
-    labels: ['Only Hospitalized', 'In Icu', 'On Ventilator'],
+    labels: ['Solo hospitalizados', 'En UCI', 'Con Ventilación asistida'],
     datasets: [
       {
-        label: 'One day data Covid',
+        label: 'Datos de 1 día Covid',
         data: dataHospitalized,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

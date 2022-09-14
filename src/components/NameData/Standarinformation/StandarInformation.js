@@ -35,13 +35,17 @@ const StandarInformation = ({ info }) => {
     </Descriptions.Item>,
   ]);
 
+  let gender;
+  if (info.genderize.gender)
+    gender = info.genderize.gender === 'male' ? 'Hombre' : 'Mujer';
+
   return (
     <Descriptions title={info.agify.name} bordered style={style.description}>
       <Descriptions.Item label="Edad más probable" span={3}>
         {info.agify.age}
       </Descriptions.Item>
       <Descriptions.Item label="Género" span={2}>
-        {info.genderize.gender}
+        {gender}
       </Descriptions.Item>
       <Descriptions.Item label="Probabilidad del género" span={1}>
         {info.genderize.probability}
