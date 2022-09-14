@@ -1,0 +1,8 @@
+node_modules
+docker-compose*
+Dockerfile*
+.eslintrc.json
+.gitignore
+.prettierrc.json
+.husky
+README.md
