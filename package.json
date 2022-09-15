@@ -1,6 +1,6 @@
 {
   "name": "dcycle",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -27,7 +27,7 @@
   "scripts": {
     "start": "WATCHPACK_POLLING=true react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --forceExit --detectOpenHandles --watchAll",
+    "test": "react-scripts test --forceExit --detectOpenHandles --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{js,jsx}' --ignore-pattern node_modules/",
     "test:CI": "CI=true npm test"
