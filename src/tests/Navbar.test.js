@@ -12,6 +12,6 @@ test('Navbar is render', () => {
   );
   const elementCovid = screen.getByText('Covid');
   expect(elementCovid).toBeDefined();
-  const elementName = screen.getByText('Nombre');
+  const elementName = screen.getByText('Name');
   expect(elementName).toBeDefined();
 });

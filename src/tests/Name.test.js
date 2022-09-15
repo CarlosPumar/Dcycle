@@ -10,10 +10,10 @@ test('Error is shown', async () => {
 
   render(<NameData />);
 
-  const sendButton = screen.getByText('Enviar');
+  const sendButton = screen.getByText('Send');
 
   await user.click(sendButton);
 
-  const elementName = screen.getByText('Introduce un nombre');
+  const elementName = screen.getByText('Introduce name');
   expect(elementName).toBeDefined();
 });
