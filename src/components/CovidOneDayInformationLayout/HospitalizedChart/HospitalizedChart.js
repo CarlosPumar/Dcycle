@@ -2,10 +2,14 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { langContext } from '../../../context/LangContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HospitalizedChart = ({ oneDayData }) => {
+  const language = useContext(langContext);
+
   if (!oneDayData) {
     return null;
   }
@@ -20,7 +24,11 @@ const HospitalizedChart = ({ oneDayData }) => {
     onVentilator,
   ];
   const data = {
-    labels: ['Solo hospitalizados', 'En UCI', 'Con Ventilación asistida'],
+    labels: [
+      language.t('OnlyHospitalized'),
+      language.t('InICU'),
+      language.t('OnVentilator'),
+    ],
     datasets: [
       {
         label: 'Datos de 1 día Covid',

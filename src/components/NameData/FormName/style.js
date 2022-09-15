@@ -4,8 +4,15 @@ const style = {
     marginLeft: '5%',
   },
   input: {
-    margin: '4% 3% 3% 3%',
+    margin: '4% 3% 0 3%',
     width: '40%',
+  },
+  divInput: { marginBottom: '3.5%' },
+  error: {
+    marginLeft: '5%',
+    marginTop: '0.5%',
+    color: 'red',
+    position: 'absolute',
   },
 };
 

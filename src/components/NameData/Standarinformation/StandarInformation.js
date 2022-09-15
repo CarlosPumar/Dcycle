@@ -1,26 +1,34 @@
+import { useContext } from 'react';
 import { hasFlag } from 'country-flag-icons';
 import PropTypes from 'prop-types';
 import { Descriptions, Empty } from 'antd';
 import style from './style';
+import { langContext } from '../../../context/LangContext';
 
 const StandarInformation = ({ info }) => {
+  const language = useContext(langContext);
+
   if (!info) {
     return <Empty style={style.empty} />;
   }
 
   const nationalizeInfo = info.nationalize.country.map((country) => [
-    <Descriptions.Item label="Pais" key={country.country_id} span={1}>
+    <Descriptions.Item
+      label={language.t('Country')}
+      key={country.country_id}
+      span={1}
+    >
       {country.country_id}
     </Descriptions.Item>,
     <Descriptions.Item
-      label={`Probabilidad de ${country.country_id}`}
+      label={`${language.t('CountryProbabiliy')} ${country.country_id}`}
       key={country.country_id}
       span={1}
     >
       {Number(country.probability).toFixed(3)}
     </Descriptions.Item>,
     <Descriptions.Item
-      label={`Icono de ${country.country_id}`}
+      label={`${language.t('CountryIconFrom')} ${country.country_id}`}
       key={country.country_id}
       span={1}
     >
@@ -37,17 +45,20 @@ const StandarInformation = ({ info }) => {
 
   let gender;
   if (info.genderize.gender)
-    gender = info.genderize.gender === 'male' ? 'Hombre' : 'Mujer';
+    gender =
+      info.genderize.gender === 'male'
+        ? language.t('Male')
+        : language.t('Female');
 
   return (
     <Descriptions title={info.agify.name} bordered style={style.description}>
-      <Descriptions.Item label="Edad más probable" span={3}>
+      <Descriptions.Item label={language.t('ProbableAge')} span={3}>
         {info.agify.age}
       </Descriptions.Item>
-      <Descriptions.Item label="Género" span={2}>
+      <Descriptions.Item label={language.t('Gender')} span={2}>
         {gender}
       </Descriptions.Item>
-      <Descriptions.Item label="Probabilidad del género" span={1}>
+      <Descriptions.Item label={language.t('GenderProbability')} span={1}>
         {info.genderize.probability}
       </Descriptions.Item>
       {nationalizeInfo.map((element) => element)}

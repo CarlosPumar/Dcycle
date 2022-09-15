@@ -11,8 +11,9 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
-import { chartOptions } from '../../utils/options';
+import { useContext, useMemo } from 'react';
+import { langContext } from '../../context/LangContext';
+// import { chartOptions } from '../../utils/options';
 
 ChartJS.register(
   CategoryScale,
@@ -26,6 +27,59 @@ ChartJS.register(
 );
 
 const CovidTotalDataChart = ({ covidData }) => {
+  const language = useContext(langContext);
+
+  const chartOptions = {
+    responsive: true,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      title: {
+        display: true,
+        text: language.t('EEUUAcumulationData'),
+      },
+      zoom: {
+        zoom: {
+          wheel: {
+            enabled: true,
+          },
+          mode: 'x',
+          speed: 100,
+        },
+        pan: {
+          enabled: true,
+          mode: 'x',
+          speed: 100,
+        },
+      },
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+      y2: {
+        type: 'linear',
+        display: false,
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
+  };
+
   const labels = useMemo(
     () => covidData.map((info) => info.date).reverse(),
     [covidData],
@@ -47,21 +101,21 @@ const CovidTotalDataChart = ({ covidData }) => {
     labels,
     datasets: [
       {
-        label: 'Casos',
+        label: language.t('Cases'),
         data: dataY,
         borderColor: 'rgb(148, 41, 254)',
         backgroundColor: 'rgba(104, 6, 202, 0.5)',
         yAxisID: 'y',
       },
       {
-        label: 'Pruebas',
+        label: language.t('Tests'),
         data: dataY1,
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
         yAxisID: 'y1',
       },
       {
-        label: 'Muertes',
+        label: language.t('Deaths'),
         data: dataY2,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
