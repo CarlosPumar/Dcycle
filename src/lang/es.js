@@ -20,7 +20,7 @@ const NameInformationPage = {
 };
 
 const LineChartInformationPage = {
-  EEUUAcumulationData: 'Acumulación de data en EEUU',
+  EEUUAcumulationData: 'Informacion del Covid EEUU',
   Cases: 'Casos',
   Tests: 'Pruebas',
   Deaths: 'Muertes',
