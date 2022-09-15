@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { DatePicker, Layout, Descriptions, Empty } from 'antd';
 import moment from 'moment';
-import { dateFormat } from '../../../utils/options';
+import { dateFormat } from '../../../utils/constants';
 import style from './style';
 import { langContext } from '../../../context/LangContext';
 

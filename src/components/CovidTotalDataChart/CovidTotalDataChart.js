@@ -13,7 +13,6 @@ import { Line } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 import { useContext, useMemo } from 'react';
 import { langContext } from '../../context/LangContext';
-// import { chartOptions } from '../../utils/options';
 
 ChartJS.register(
   CategoryScale,
@@ -64,15 +63,15 @@ const CovidTotalDataChart = ({ covidData }) => {
       },
       y1: {
         type: 'linear',
-        display: true,
-        position: 'right',
+        display: false,
         grid: {
           drawOnChartArea: false,
         },
       },
       y2: {
         type: 'linear',
-        display: false,
+        display: true,
+        position: 'right',
         grid: {
           drawOnChartArea: false,
         },

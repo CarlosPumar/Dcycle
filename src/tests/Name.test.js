@@ -1,19 +1,30 @@
-import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { LangProvider } from '../context/LangContext';
 
 import NameData from '../components/NameData/NameData';
+import i18n from '../lang/I18Config';
 
-test('Error is shown', async () => {
-  const user = userEvent.setup();
+describe('testSuite', () => {
+  beforeEach(() => {
+    i18n.init();
+  });
 
-  render(<NameData />);
+  test('Error is shown', async () => {
+    const user = userEvent.setup();
 
-  const sendButton = screen.getByText('Send');
+    render(
+      <LangProvider>
+        <NameData />
+      </LangProvider>,
+    );
 
-  await user.click(sendButton);
+    const sendButton = screen.getByText('Send');
 
-  const elementName = screen.getByText('Introduce name');
-  expect(elementName).toBeDefined();
+    await user.click(sendButton);
+
+    const elementName = screen.getByText('Introduce name');
+    expect(elementName).toBeDefined();
+  });
 });
